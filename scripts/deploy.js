@@ -1,9 +1,9 @@
 async function main () {
-  const Champions = await ethers.getContractFactory('Champions');
+  const Felos = await ethers.getContractFactory('Felos');
   
-  const champions = await Champions.deploy();
-  await champions.deployed();
-  console.log('deployed to:', champions.address);
+  const felos = await Felos.deploy();
+  await felos.deployed();
+  console.log('deployed to:', felos.address);
 }
 
 main()

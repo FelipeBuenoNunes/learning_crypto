@@ -1,19 +1,16 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "hardhat/console.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Champions {
-    string private bestPlayer;
-
-    constructor() {
-        bestPlayer = "";
+contract Felos is ERC20, ERC20Burnable, Ownable {
+    constructor() ERC20("Felos", "FLP") {
+        _mint(msg.sender, 500 * 10 ** decimals());
     }
 
-    function setPlayer(string memory newPlayer) public {
-        bestPlayer = newPlayer;
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
     }
-
-    function getPlayer() public view returns (string memory) {
-        return bestPlayer;
-    }   
 }
